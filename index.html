@@ -1,49 +1,258 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body style="background-color: #072e33;">
-    <h1 style="margin-left: 8%; font-weight: bolder; color: #0c7078; text-shadow: 2px 3px 2px #0f989c;">MY BIO</h1>
-    <img src="teamom.png" alt="image not founds" id="sld" style="height: 130px;width: 140px; border-radius: 50px;margin-left: 7%;margin-top: -1.5%;"><br>
-    <button onclick="tea()" id="button" style="height: 40px; width: 100px; font-weight: bolder; margin-left: 8%; color: #0f989c; border-color:#0c7078; background-color: #072e33;">CLICK HERE</button>
-    <P style="width: 300px; height: auto; color: aqua; margin-left: 1%;font-weight: bolder; font-size: larger;" id="p"></P>
-    <a href="cv.html" id="a" style="text-decoration: none;" ><button style="font-size: x-large; font-style: italic; font-weight: bolder; margin-left: 8%; border-color:#0c7078; background-color: #072e33; color: #0c7078; display: none;" id="b"></button></a>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mustapha Portfolio</title>
 
-    <script src='https://code.responsivevoice.org/responsivevoice.js'></script>
-    <script>
-        var imag = ['teamom.png', 'teamom1.png', 'teamom2.png', 'teamom3.png'];
-        var num = 0;
-        var time = setInterval(slide, 2000);
-        function slide(){
-        var sld = document.getElementById('sld');
-            num++;
-            if(num == imag.length){
-                num = 0;
-            }
-            sld.src = imag[num];
-        }
-        var i = 0;
-        var speed = 50;
-        var aa = 'more >'
-        var text = ' hello i am mustapha abubakar iliyasu by name student of yobe state university from department of computer science faculty of science 400level i specialized on front end development and i have a basics knowledge of back end development To know more about my skills click the button below';
-        function tea(){
-            if(i < text.length){
-                document.getElementById('p').innerHTML += text.charAt(i);
-                i++;
-                setTimeout(tea, speed);
-                responsiveVoice.speak(text, "UK English Male");  
-            }
-            if(i == text.length){
-                document.getElementById('b').innerHTML = aa;
-                document.getElementById('b').style.display = "block";
-            }
-            if(i == text.length){
-                document.getElementById('button').style.display = "none";
-            }
-        }
-    </script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(
+        -45deg,
+        #05161a,
+        #072e33,
+        #0c7078,
+        #0f989c
+    );
+    background-size:400% 400%;
+    animation:gradientBG 12s ease infinite;
+    padding:20px;
+}
+
+@keyframes gradientBG{
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+
+.card{
+    width:100%;
+    max-width:450px;
+    padding:30px;
+    border-radius:25px;
+
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(20px);
+    border:1px solid rgba(255,255,255,.2);
+
+    text-align:center;
+
+    box-shadow:
+    0 0 20px rgba(15,152,156,.4),
+    0 0 60px rgba(15,152,156,.2);
+
+    animation:fadeUp 1s ease;
+}
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(50px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+h1{
+    color:#fff;
+    margin-bottom:20px;
+    font-size:2rem;
+}
+
+.profile{
+    width:180px;
+    height:180px;
+    object-fit:cover;
+    border-radius:50%;
+    border:4px solid #0f989c;
+
+    animation:float 4s ease-in-out infinite;
+
+    box-shadow:
+    0 0 20px #0f989c,
+    0 0 40px #0f989c;
+}
+
+@keyframes float{
+    0%,100%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-15px);
+    }
+}
+
+.bio{
+    color:#fff;
+    margin-top:20px;
+    line-height:1.8;
+    min-height:180px;
+}
+
+.btn{
+    margin-top:20px;
+    padding:12px 28px;
+    border:none;
+    border-radius:50px;
+
+    background:#0f989c;
+    color:white;
+    font-weight:600;
+    cursor:pointer;
+
+    transition:.4s;
+}
+
+.btn:hover{
+    transform:translateY(-5px);
+    box-shadow:
+    0 0 20px #0f989c,
+    0 0 50px #0f989c;
+}
+
+.more-btn{
+    display:none;
+    margin-top:20px;
+}
+
+.more-btn a{
+    text-decoration:none;
+    color:white;
+}
+
+.skills{
+    margin-top:20px;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+.skill{
+    padding:8px 15px;
+    background:rgba(255,255,255,.1);
+    border-radius:30px;
+    color:white;
+    font-size:.9rem;
+}
+
+</style>
+</head>
+<body>
+
+<div class="card">
+
+    <h1>MY BIO</h1>
+
+    <img src="teamom.png" id="sld" class="profile">
+
+    <div class="skills">
+        <span class="skill">HTML</span>
+        <span class="skill">CSS</span>
+        <span class="skill">JavaScript</span>
+        <span class="skill">Frontend</span>
+        <span class="skill">UI Design</span>
+    </div>
+
+    <p class="bio" id="p"></p>
+
+    <button class="btn" onclick="tea()" id="button">
+        Discover Me
+    </button>
+
+    <button class="btn more-btn" id="b">
+        <a href="cv.html">View Portfolio →</a>
+    </button>
+
+</div>
+
+<script src="https://code.responsivevoice.org/responsivevoice.js"></script>
+
+<script>
+
+const imag = [
+    "teamom.png",
+    "teamom1.png",
+    "teamom2.png",
+    "teamom3.png"
+];
+
+let num = 0;
+
+setInterval(() => {
+
+    num++;
+
+    if(num >= imag.length){
+        num = 0;
+    }
+
+    document.getElementById("sld").src = imag[num];
+
+},2500);
+
+const text =
+`Hello, I am Mustapha Abubakar Iliyasu, a 400-level Computer Science student at Yobe State University.
+
+I specialize in Frontend Development and have foundational knowledge of Backend Development.
+
+I enjoy creating modern, responsive, and user-friendly websites using current web technologies.
+
+Click below to explore my portfolio and discover more about my projects, skills, and achievements.`;
+
+let i = 0;
+let started = false;
+
+function tea(){
+
+    if(started) return;
+
+    started = true;
+
+    responsiveVoice.speak(
+        "Hello, I am Mustapha Abubakar Iliyasu. Welcome to my portfolio.",
+        "UK English Male"
+    );
+
+    typeWriter();
+}
+
+function typeWriter(){
+
+    if(i < text.length){
+
+        document.getElementById("p").innerHTML += text.charAt(i);
+
+        i++;
+
+        setTimeout(typeWriter,30);
+
+    }else{
+
+        document.getElementById("button").style.display="none";
+
+        document.getElementById("b").style.display="inline-block";
+    }
+}
+
+</script>
+
 </body>
 </html>
