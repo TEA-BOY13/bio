@@ -159,7 +159,10 @@ h1{
 
 <div class="card">
 
-    <h1>MY BIO</h1>
+    <h1>Mustapha Abubakar Iliyasu</h1>
+<p style="color:#00ffff;">
+Frontend Developer • Computer Science Graduate
+</p>
 
     <img src="teamom.png" id="sld" class="profile">
 
@@ -184,8 +187,6 @@ h1{
     </button>
 
 </div>
-
-<script src="https://code.responsivevoice.org/responsivevoice.js"></script>
 
 <script>
 
@@ -222,16 +223,6 @@ Click below to explore my portfolio and discover more about my projects, skills,
 let i = 0;
 let started = false;
 
-function tea(){
-
-    if(started) return;
-
-    started = true;
-
-    responsiveVoice.speak(
-        "Hello, I am Mustapha Abubakar Iliyasu. Welcome to my portfolio.",
-        "UK English Male"
-    );
 
     typeWriter();
 }
@@ -254,7 +245,18 @@ function typeWriter(){
     }
 }
 
-</script>
+    window.addEventListener("load", () => {
 
+    setTimeout(() => {
+
+        document.getElementById("myVoice").play();
+
+    },1000);
+
+});
+</script>
+ <audio id="myVoice">
+    <source src="mustapha-voice.mp3" type="audio/mpeg">
+</audio>
 </body>
 </html>
